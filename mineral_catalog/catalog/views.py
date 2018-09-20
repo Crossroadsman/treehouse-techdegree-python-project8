@@ -31,3 +31,9 @@ def random_mineral(request):
     index = random.randrange(count)
     mineral = minerals[index]
     return redirect('catalog:detail', mineral_id=mineral.pk)
+
+def initial_letter(request, letter):
+    minerals = Mineral.objects.filter(name__startswith=letter)
+    template = 'catalog/index.html'
+    context = {'minerals': minerals}
+    return render(request, template, context)
