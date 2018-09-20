@@ -1,0 +1,45 @@
+{% extends 'layout.html' %}
+{% load static %}
+
+{% block title %}{{ mineral.name }}{% endblock %}
+
+{% block custom_css %}
+  <link rel="stylesheet" href="{% static 'catalog/css/catalog.css' %}">
+{% endblock %}
+
+{% block content %}
+  <div class="grid-100 mineral__container">
+    <h1 class="mineral__name">{{ mineral.name }}</h1>
+    <div class="mineral__image-bg">
+      {% with 'img/'|add:mineral.image_filename as image_path %}
+        <img class="mineral__image" src="{% static image_path %}">
+      {% endwith %}
+      <p class="mineral__caption">{{ mineral.image_caption }}</p>
+    </div><!-- close image -->
+    <div class="mineral__table-container container-highlighted">
+        <table class="mineral__table table-highlighted">
+            {% for key, value in mineral.fieldnames_and_values.items %}
+            {% if key in highlighted %}
+              <tr>
+                <td class="mineral__category">{{ value.name|title }}</td>
+                <td>{{ value.value|safe }}</td>
+              </tr>
+            {% endif %}  
+          {% endfor %}
+        </table>
+    </div>
+    <div class="mineral__table-container">
+      <table class="mineral__table">
+        {% for key, value in mineral.fieldnames_and_values.items %}
+          {% if key not in exclude and key not in top_section and key not in highlighted %}
+            <tr>
+              <td class="mineral__category">{{ value.name|title }}</td>
+              <td>{{ value.value|safe }}</td>
+            </tr>
+          {% endif %}
+        {% endfor %}
+      </table>
+    </div><!-- close table -->
+
+  </div><!-- close grid-100 -->
+{% endblock %}

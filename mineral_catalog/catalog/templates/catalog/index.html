@@ -1,0 +1,19 @@
+{% extends 'layout.html' %}
+{% load static %}
+
+{% block title %}Minerals List{% endblock %}
+{% block custom_css %}
+  <link rel="stylesheet" href="{% static 'catalog/css/catalog.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="grid-100">
+    <ul class="minerals__container">
+      {% for mineral in minerals %}
+        <li class="minerals__item">
+          <a class="minerals__anchor" href="{% url 'catalog:detail' mineral_id=mineral.pk %}">{{ mineral.name }}</a>
+        </li>
+      {% endfor %}
+    </ul>
+  </div><!-- close grid-100 -->
+{% endblock %}

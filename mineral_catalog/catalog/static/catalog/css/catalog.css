@@ -1,0 +1,18 @@
+.table-highlighted {
+    width: 100%;
+    font-size: 1.3em;
+    /* border: 2px solid #999; */
+    color: #CAE5D2;
+    /*background-color: black;*/
+}
+
+.container-highlighted {
+    border: 2px solid #406b44;
+    background-color: #384033;
+    color: white;
+}
+
+h1 {
+    font-size: 4em;
+    font-weight: 800;
+}
