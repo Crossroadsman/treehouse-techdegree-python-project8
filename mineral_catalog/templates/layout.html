@@ -32,14 +32,28 @@
         <p class="logo__text text-centered">They're not rocks.</p>
       </div><!-- close grid-100 -->
 
-      <div class="text-centered">
-        <h3>
-          {% for letter in 'ABCDEFGHIJKLMNOPQRSTUVWXYZ' %}
-            <a href="{% url 'catalog:initial_letter' letter=letter %}">{{ letter }}</a>
-          {% endfor %}
-        </h3>
-        <!-- <h3>A B C D E F G H I J K L M N O P Q R S T U V W X Y Z</h3> -->
+      <div>
+        <!-- letter filter -->
+        <div class="text-centered">
+          <p>
+            {% for letter in 'ABCDEFGHIJKLMNOPQRSTUVWXYZ' %}
+              <span class="{% if bolded == letter %}bold{% endif %}">
+                <a href="{% url 'catalog:initial_letter' letter=letter %}">{{ letter }}</a>
+              </span>
+            {% endfor %}
+          </p>
+        </div>
+        <!-- search -->
+        <div>
+          <form action="{% url 'catalog:search' %}">
+            <ul class="menu">
+              <li><input type="search" name="q"></li>
+              <li><button type="button">Search</button></li>
+            </ul>
+          </form>
+        </div>
       </div>
+      
 
       {% block content %}
       {% endblock %}

@@ -16,3 +16,9 @@ h1 {
     font-size: 4em;
     font-weight: 800;
 }
+
+span.bold {
+    font-weight: 900;
+    /*border: 1px solid #384033;*/
+}
+  
