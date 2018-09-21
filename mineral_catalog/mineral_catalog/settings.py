@@ -31,14 +31,15 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'catalog',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'django_nose'
+    'django_nose',
+    'debug_toolbar',
+    'catalog',
 ]
 
 MIDDLEWARE = [
@@ -49,6 +50,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
 ]
 
 ROOT_URLCONF = 'mineral_catalog.urls'
@@ -136,3 +138,6 @@ NOSE_ARGS = [
     '--cover-package=catalog',  # packages can be comma-separated
     '--cover-html',  # generate HTML coverage report
 ]
+
+# Specify internal IPs for debug_toolbar
+INTERNAL_IPS = ['127.0.0.1']
