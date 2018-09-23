@@ -1,0 +1,8 @@
+{% load catalog_extras %}
+{% for group in groups %}
+    <li><a href="{% url 'catalog:group' group=group %}">
+      <span class="{% if group in bolded %}bold{% else %}nonbold{% endif %}">
+        {{ group|deunderscore }}
+      </span>
+    </a></li>
+{% endfor %}

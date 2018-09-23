@@ -6,10 +6,10 @@ from django.shortcuts import render, redirect
 from .models import Mineral
 
 
-def index(request, letter='A'):
+def index(request, letter='A', group=None):
     minerals = Mineral.objects.filter(name__startswith=letter)
     template = 'catalog/index.html'
-    context = {'minerals': minerals, 'bolded': letter}
+    context = {'minerals': minerals, 'bolded': [letter]}
     return render(request, template, context)
 
 def detail(request, mineral_id):
@@ -36,7 +36,14 @@ def random_mineral(request):
 def initial_letter(request, letter):
     minerals = Mineral.objects.filter(name__startswith=letter)
     template = 'catalog/index.html'
-    context = {'minerals': minerals, 'bolded': letter}
+    context = {'minerals': minerals, 'bolded': [letter]}
+    return render(request, template, context)
+
+def group(request, group):
+    group_spaces = group.replace('_', ' ')
+    minerals = Mineral.objects.filter(group__iexact=group_spaces)
+    template = 'catalog/index.html'
+    context = {'minerals': minerals, 'bolded': [group]}
     return render(request, template, context)
 
 def search(request):

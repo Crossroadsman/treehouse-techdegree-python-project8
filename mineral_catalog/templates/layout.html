@@ -1,6 +1,7 @@
-{% load static from staticfiles %}
-
 <!doctype html>
+{% load static from staticfiles %}
+{% load catalog_extras %}
+
 <html lang="en">
   <head>
     <meta charset="utf-8">
@@ -17,6 +18,14 @@
   </head>
 
   <body>
+    <!-- side nav bar -->
+    <div id="sidebar-left">
+      <ul>
+        {% nav_group_list bolded %}
+      </ul>
+    </div>
+    <!-- end side nav bar-->
+
     <div class="bounds">
       <div class="grid-100">
         <a href="{% url 'catalog:index' %}">
@@ -37,7 +46,7 @@
         <div class="text-centered">
           <p>
             {% for letter in 'ABCDEFGHIJKLMNOPQRSTUVWXYZ' %}
-              <span class="{% if bolded == letter %}bold{% endif %}">
+              <span class="{% if letter in bolded %}bold{%else%}nonbold{% endif %}">
                 <a href="{% url 'catalog:initial_letter' letter=letter %}">{{ letter }}</a>
               </span>
             {% endfor %}
@@ -53,6 +62,7 @@
           </form>
         </div>
       </div>
+      
       
 
       {% block content %}

@@ -17,8 +17,31 @@ h1 {
     font-weight: 800;
 }
 
+span.nonbold {
+    font-weight: 100;
+    font-size: 0.85em;
+}
+
 span.bold {
     font-weight: 900;
+    font-size: 1.15em;
     /*border: 1px solid #384033;*/
 }
-  
+
+/* side navigation menu
+   --------------------
+*/
+#sidebar-left {
+    height: 100%;
+    width: 15%;
+    position: fixed; /* required to make full-height */
+    z-index: 1; /* keep on top */
+    top: 0; /* keep at top-left */
+    left: 0;
+    overflow-x: hidden; /* prevent horizontal scroll */
+
+    background-color: #384033;
+    padding-top: 15%;
+
+    font-size: 2em;
+}
