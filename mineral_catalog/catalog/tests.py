@@ -109,10 +109,10 @@ class IndexViewTests(TestCase):
             'specific_gravity': "Test Specific Gravity"
         }
         self.test_mineral_1 = Mineral.objects.create(**self.test_mineral_data)
-        self.test_mineral_1.name = "Test Mineral Index 2 (id1)"
+        self.test_mineral_1.name = "A Test Mineral Index 2 (id1)"
         self.test_mineral_1.save()
         self.test_mineral_2 = Mineral.objects.create(**self.test_mineral_data)
-        self.test_mineral_2.name = "Test Mineral Index 1 (id2)"
+        self.test_mineral_2.name = "A Test Mineral Index 1 (id2)"
         self.test_mineral_2.save()
         self.response = self.client.get(reverse('catalog:index'))
 

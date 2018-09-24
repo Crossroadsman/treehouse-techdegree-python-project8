@@ -6,25 +6,11 @@ from catalog.models import Mineral
 register = template.Library()
 
 
-@register.inclusion_tag('catalog/group_nav.html')
-def nav_group_list(bolded):
-    """Returns the mineral groups to display as a navigation pane"""
-    groups = Mineral.objects.order_by().values_list(
-        'group', flat=True
-    ).distinct()
-    groups_ = [x.replace(' ', '_') for x in groups]
-    return {'groups': groups_, 'bolded': bolded }
-
 @register.inclusion_tag('catalog/field_nav.html')
 def nav_field_list(group_lookup, bolded):
     """Returns a list of items to display as a navigation pane"""
-    print("in inclusion tag")
-    print("group_lookup is: " + str(group_lookup) )
-    print("loading items:")
     items = group_lookup.list
     items = [x.replace(' ', '_') for x in items]
-    print(items)
-    
     return {'field': group_lookup.name, 'items': items, 'bolded': bolded, 'range': range(len(items))}
 
 @register.filter('deunderscore')

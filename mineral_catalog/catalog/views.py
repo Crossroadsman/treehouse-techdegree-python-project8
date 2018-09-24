@@ -40,18 +40,6 @@ def initial_letter(request, letter):
     context = {'minerals': minerals, 'bolded': [letter], 'filter_fields': FILTER_FIELDS}
     return render(request, template, context)
 
-'''
-def group(request, field, item):
-    item_spaces = item.replace('_', ' ')
-    item_spaces = item_spaces.replace('None', '')
-    argument_label = 'field' + "__iexact"
-    filter_kwargs = {argument_label: item_spaces}
-    minerals = FILTER_FIELDS[item_spaces].get_matching_queryset
-    
-    template = 'catalog/index.html'
-    context = {'minerals': minerals, 'bolded': [item], 'filter_fields': FILTER_FIELDS}
-    return render(request, template, context)
-'''
 def group(request, field, index):
     """Displays a list view which is filtered by a `field` (the valid fields
     are specified by FILTER_FIELDS). Each field has a list of acceptable

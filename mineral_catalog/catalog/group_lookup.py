@@ -1,5 +1,6 @@
 from .models import Mineral
 
+
 group_list = Mineral.objects.order_by().values_list('group', flat=True).distinct()
 group_match = 'exact'
 
@@ -56,4 +57,3 @@ groups = {
     'formula': GroupLookup(name='formula', list=formula_list, match=formula_match, before=formula_regex_before, after=formula_regex_after),
     'crystal system': GroupLookup(name='crystal_system', list=crystal_system_list, match=crystal_system_match),
 }
-    
