@@ -1,4 +1,4 @@
-treehouse-techdegree-python-project6
+treehouse-techdegree-python-project8
 ====================================
 
 Installation
