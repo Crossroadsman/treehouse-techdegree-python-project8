@@ -1,0 +1,8 @@
+{% load catalog_extras %}
+{% for item in items %}
+    <li><a href="{% url 'catalog:group' field=field item=item %}">
+      <span class="{% if item in bolded %}bold{% else %}nonbold{% endif %}">
+        {{ item|deunderscore }}
+      </span>
+    </a></li>
+{% endfor %}

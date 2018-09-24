@@ -6,10 +6,12 @@ from django.shortcuts import render, redirect
 from .models import Mineral
 
 
+FILTER_FIELDS = ['group',]
+
 def index(request, letter='A', group=None):
     minerals = Mineral.objects.filter(name__startswith=letter)
     template = 'catalog/index.html'
-    context = {'minerals': minerals, 'bolded': [letter]}
+    context = {'minerals': minerals, 'bolded': [letter], 'filter_fields': FILTER_FIELDS}
     return render(request, template, context)
 
 def detail(request, mineral_id):
@@ -23,7 +25,7 @@ def detail(request, mineral_id):
     context = {'mineral': mineral,
                'exclude': exclude,
                'top_section': top_section,
-               'highlighted': highlighted,}
+               'highlighted': highlighted,'filter_fields': FILTER_FIELDS}
     return render(request, template, context)
 
 def random_mineral(request):
@@ -36,14 +38,26 @@ def random_mineral(request):
 def initial_letter(request, letter):
     minerals = Mineral.objects.filter(name__startswith=letter)
     template = 'catalog/index.html'
-    context = {'minerals': minerals, 'bolded': [letter]}
+    context = {'minerals': minerals, 'bolded': [letter], 'filter_fields': FILTER_FIELDS}
     return render(request, template, context)
 
+"""
 def group(request, group):
     group_spaces = group.replace('_', ' ')
     minerals = Mineral.objects.filter(group__iexact=group_spaces)
     template = 'catalog/index.html'
     context = {'minerals': minerals, 'bolded': [group]}
+    return render(request, template, context)
+"""
+
+def group(request, field, item):
+    item_spaces = item.replace('_', ' ')
+    item_spaces = item_spaces.replace('None', '')
+    argument_label = 'field' + "__iexact"
+    filter_kwargs = {argument_label: item_spaces}
+    minerals = Mineral.objects.filter(**filter_kwargs)
+    template = 'catalog/index.html'
+    context = {'minerals': minerals, 'bolded': [item], 'filter_fields': FILTER_FIELDS}
     return render(request, template, context)
 
 def search(request):
@@ -70,5 +84,5 @@ def search(request):
         Q(specific_gravity__icontains=term)
     )
     template = 'catalog/index.html'
-    context = {'minerals': minerals}
+    context = {'minerals': minerals, 'filter_fields': FILTER_FIELDS}
     return render(request, template, context)

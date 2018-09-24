@@ -20,9 +20,12 @@
   <body>
     <!-- side nav bar -->
     <div id="sidebar-left">
-      <ul>
-        {% nav_group_list bolded %}
-      </ul>
+      {% for field in filter_fields %}
+        {{ field }}
+        <ul>
+            {% nav_field_list field bolded %}
+        </ul>
+      {% endfor %}
     </div>
     <!-- end side nav bar-->
 
