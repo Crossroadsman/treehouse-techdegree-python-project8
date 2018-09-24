@@ -1,5 +1,7 @@
 from .models import Mineral
 
+group_list = Mineral.objects.order_by().values_list('group', flat=True).distinct()
+group_match = 'exact'
 
 category_list = ['Amphibole', 'Antimonide', 'Arsenate', 'Arsenic', 'Arsenide', 'Arsenite', 'Borate', 'Carbonate', 'Chromate', 'Copper', 'Dark mica', 'Feldspar', 'Feldspathoid', 'Garnet', 'Halide', 'Inosilicate', 'Iodate', 'Manganese', 'Metals and intermetallic alloys', 'Meteorite', 'Molybdate', 'Native', 'Nesosilicates', 'Nitrate', 'Organic', 'Oxalate', 'Oxide', 'Phosphate', 'Pyroxene', 'Rare earth', 'Selenate', 'Selenide', 'Silicate', 'Sulfate', 'Sulfide', 'Sulfosalt', 'Tectosilicates', 'Tektoborate', 'Telluride', 'Tellurate', 'Tellurite', 'Titanium', 'Tungstate', 'Uranium', 'Vanadate', 'Zeolite']
 category_match = 'contains'
@@ -48,6 +50,7 @@ class GroupLookup:
 
 
 groups = {
+    'group': GroupLookup(name='group', list=group_list, match=group_match),
     'category': GroupLookup(name='category', list=category_list, match=category_match),
     'strunz classification': GroupLookup(name='strunz_classification', list=strunz_classification_list, match=strunz_classification_match),
     'formula': GroupLookup(name='formula', list=formula_list, match=formula_match, before=formula_regex_before, after=formula_regex_after),
