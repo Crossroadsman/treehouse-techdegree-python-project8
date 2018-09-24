@@ -1,8 +1,10 @@
 {% load catalog_extras %}
-{% for item in items %}
-    <li><a href="{% url 'catalog:group' field=field item=item %}">
+{% for i in range %}
+  {% with items|index:i|deunderscore as item %}
+    <li><a href="{% url 'catalog:group' field=field index=i %}">
       <span class="{% if item in bolded %}bold{% else %}nonbold{% endif %}">
-        {{ item|deunderscore }}
+        {{ item }}
       </span>
     </a></li>
+  {% endwith %}
 {% endfor %}

@@ -1,3 +1,6 @@
+from .models import Mineral
+
+
 category_list = ['Amphibole', 'Antimonide', 'Arsenate', 'Arsenic', 'Arsenide', 'Arsenite', 'Borate', 'Carbonate', 'Chromate', 'Copper', 'Dark mica', 'Feldspar', 'Feldspathoid', 'Garnet', 'Halide', 'Inosilicate', 'Iodate', 'Manganese', 'Metals and intermetallic alloys', 'Meteorite', 'Molybdate', 'Native', 'Nesosilicates', 'Nitrate', 'Organic', 'Oxalate', 'Oxide', 'Phosphate', 'Pyroxene', 'Rare earth', 'Selenate', 'Selenide', 'Silicate', 'Sulfate', 'Sulfide', 'Sulfosalt', 'Tectosilicates', 'Tektoborate', 'Telluride', 'Tellurate', 'Tellurite', 'Titanium', 'Tungstate', 'Uranium', 'Vanadate', 'Zeolite']
 category_match = 'contains'
 
@@ -33,12 +36,21 @@ class GroupLookup:
         else:
             value = self.list[i]
         key = self.name + "__" + self.match
-        return (key, value)
+        return {key: value}
+
+    def get_matching_queryset(self, i):
+        filter_kwarg = self.make_key_and_value(i)
+        matches = Mineral.objects.filter(**filter_kwarg)
+        return matches
+    
+    def __str__(self):
+        return self.name
 
 
 groups = {
     'category': GroupLookup(name='category', list=category_list, match=category_match),
     'strunz classification': GroupLookup(name='strunz_classification', list=strunz_classification_list, match=strunz_classification_match),
-    'formula': GroupLookup(name='formula', list=formula_list, match=formula_match),
+    'formula': GroupLookup(name='formula', list=formula_list, match=formula_match, before=formula_regex_before, after=formula_regex_after),
     'crystal system': GroupLookup(name='crystal_system', list=crystal_system_list, match=crystal_system_match),
 }
+    

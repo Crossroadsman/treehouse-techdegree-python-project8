@@ -20,10 +20,10 @@
   <body>
     <!-- side nav bar -->
     <div id="sidebar-left">
-      {% for field in filter_fields %}
-        {{ field }}
+      {% for groupname, grouplookup in filter_fields.items %}
+        {{ groupname }}
         <ul>
-            {% nav_field_list field bolded %}
+            {% nav_field_list grouplookup bolded %}
         </ul>
       {% endfor %}
     </div>

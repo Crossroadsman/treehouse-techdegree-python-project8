@@ -5,6 +5,7 @@ from catalog.models import Mineral
 
 register = template.Library()
 
+
 @register.inclusion_tag('catalog/group_nav.html')
 def nav_group_list(bolded):
     """Returns the mineral groups to display as a navigation pane"""
@@ -15,21 +16,22 @@ def nav_group_list(bolded):
     return {'groups': groups_, 'bolded': bolded }
 
 @register.inclusion_tag('catalog/field_nav.html')
-def nav_field_list(filter_field, bolded):
-    """Returns the group_by to display as a navigation pane"""
-    items = Mineral.objects.order_by().values_list(
-        filter_field, flat=True
-    ).distinct()
-    items_ = []
-    for item in items:
-        if item == '':
-            items_.append("None")
-        else:
-            items_.append(item.replace(' ', '_'))
-    return {'field': filter_field, 'items': items_, 'bolded': bolded }
-
+def nav_field_list(group_lookup, bolded):
+    """Returns a list of items to display as a navigation pane"""
+    print("in inclusion tag")
+    print("group_lookup is: " + str(group_lookup) )
+    print("loading items:")
+    items = group_lookup.list
+    items = [x.replace(' ', '_') for x in items]
+    print(items)
+    
+    return {'field': group_lookup.name, 'items': items, 'bolded': bolded, 'range': range(len(items))}
 
 @register.filter('deunderscore')
 def deunderscore(text):
     """Replaces underscores with spaces"""
     return text.replace('_', ' ')
+
+@register.filter('index')
+def index(list, i):
+    return list[int(i)]
