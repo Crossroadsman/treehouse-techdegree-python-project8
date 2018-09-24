@@ -32,7 +32,7 @@ span.bold {
    --------------------
 */
 #sidebar-left {
-    height: 100%;
+    height: 66%;
     width: 15%;
     position: fixed; /* required to make full-height */
     z-index: 1; /* keep on top */
@@ -42,6 +42,36 @@ span.bold {
 
     background-color: #384033;
     padding-top: 15%;
+    padding-bottom: 5%;
+    padding-left: 1%;
 
     font-size: 2em;
+
+}
+
+.sidebar-menuitem-title {
+    font-size: 0.75em;
+}
+
+#sidebar-left li {
+    padding-left: 3px;
+    list-style: none;
+}
+
+.top-menu {
+    padding: 0;
+    margin-top: 35%;
+    border: 1px solid #406b44;
+    background-color: #384033;
+}
+
+.search-menu {
+    list-style: none;    
+}
+
+form.search-menu {
+    display: inline;
+}
+.search-menu li {
+    display: inline;
 }

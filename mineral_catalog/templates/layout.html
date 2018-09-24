@@ -21,7 +21,7 @@
     <!-- side nav bar -->
     <div id="sidebar-left">
       {% for groupname, grouplookup in filter_fields.items %}
-        <A href="#" class="sidebar-menuitem-title">{{ groupname }}</A>
+        <span class="sidebar-menuitem-title">{{ groupname }}</span>
         <ul class="sidebar-menuitem-value">
             {% nav_field_list grouplookup bolded %}
         </ul>
@@ -45,24 +45,24 @@
       </div><!-- close grid-100 -->
 
       <div>
-        <!-- letter filter -->
+        
         <div class="text-centered">
-          <p>
+          <div class="menu top-menu">
+            <!-- letter filter -->
             {% for letter in 'ABCDEFGHIJKLMNOPQRSTUVWXYZ' %}
               <span class="{% if letter in bolded %}bold{%else%}nonbold{% endif %}">
                 <a href="{% url 'catalog:initial_letter' letter=letter %}">{{ letter }}</a>
               </span>
             {% endfor %}
-          </p>
-        </div>
-        <!-- search -->
-        <div>
-          <form action="{% url 'catalog:search' %}">
-            <ul class="menu">
-              <li><input type="search" name="q"></li>
-              <li><button type="button">Search</button></li>
-            </ul>
-          </form>
+
+            <!-- search -->
+            <form action="{% url 'catalog:search' %}" class="menu search-menu">
+              <ul>
+                <li><input type="search" name="q"></li>
+                <li><button type="button">Search</button></li>
+              </ul>
+            </form>
+          </div>
         </div>
       </div>
       
