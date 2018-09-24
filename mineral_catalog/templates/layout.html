@@ -21,8 +21,8 @@
     <!-- side nav bar -->
     <div id="sidebar-left">
       {% for groupname, grouplookup in filter_fields.items %}
-        {{ groupname }}
-        <ul>
+        <A href="#" class="sidebar-menuitem-title">{{ groupname }}</A>
+        <ul class="sidebar-menuitem-value">
             {% nav_field_list grouplookup bolded %}
         </ul>
       {% endfor %}
@@ -73,6 +73,8 @@
       <div class="minerals__random">
         <a class="minerals__anchor" href="{% url 'catalog:random' %}">Show random mineral</a>
       </div>
-    </div><!-- close bounds -->    
+    </div><!-- close bounds --> 
+    
+    <script src="{% static 'catalog/js/sidebar_menu.js' %}"></script>
   </body>
 </html>
