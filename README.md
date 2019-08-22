@@ -66,6 +66,64 @@ Feature Checklist
 - [ ] : **Coding Style.**
   - [ ] : Make sure your coding style complies with [PEP 8][link05].
 
+### Extra Credit Features ###
+- [ ] : **Allow full-text search.**
+  - [ ] : Instead of only searching the mineral names, the site will search all fields in the database and display the names
+          of the minerals that contain the search text.
+- [ ] : **Add more ways to filter.**
+  - [ ] : Instead of just filtering by first letter and group, add one or more additional filters.
+  - [ ] : These should behave like the group filter. Example filters are color and crystal habit, but you can choose to 
+          add filtering for any property you like. Hint: the filters can act like canned search queries.
+
+
+Testing
+-------
+
+### [Test Running](https://docs.djangoproject.com/en/2.2/topics/testing/overview/#running-tests) ###
+
+- Run all tests:
+  ```console
+   $ python manage.py test
+   ```
+
+- Run a single test suite:
+  ```console
+  $ python manage.py test accounts
+  ```
+
+- Run a single test file:
+  ```console
+  $ python manage.py test accounts.tests.test_models
+  ```
+
+- Run a single test case:
+  ```console
+  $ python manage.py test accounts.tests.test_models.UserProfileModelTest
+  ```
+
+- Run a single test method:
+  ```console
+  $ python manage.py test accounts.tests.test_models.UserProfileModelTest.test_userprofile_without_required_fields_is_invalid
+  ```
+
+### Coverage ###
+
+- Run coverage:
+  ```console
+  $ coverage run manage.py test [the-app-to-test]
+  ```
+
+- Show the coverage report:
+  ```console
+  $ coverage report
+  ```
+
+- Erase the coverage report
+  ```console
+  $ coverage erase
+  ```
+
+
 
 [link01]: https://github.com/Crossroadsman/treehouse-techdegree-python-project6/blob/master/mineral_catalog/requirements.txt
 [link02]: https://github.com/Crossroadsman/treehouse-techdegree-python-project6/tree/master/mineral_catalog
