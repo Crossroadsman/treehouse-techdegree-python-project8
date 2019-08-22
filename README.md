@@ -1,4 +1,4 @@
-treehouse-techdegree-python-project8
+Project 8: TBD
 ====================================
 
 Installation
@@ -23,7 +23,7 @@ Feature Checklist
 
 ### Base Features ###
 
-- [ ]: Uses provided base HTML/CSS
+- [ ] : Uses provided base HTML/CSS
 
 
 [link01]: https://github.com/Crossroadsman/treehouse-techdegree-python-project6/blob/master/mineral_catalog/requirements.txt
