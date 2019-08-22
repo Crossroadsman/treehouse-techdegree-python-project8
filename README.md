@@ -56,8 +56,19 @@ Feature Checklist
     - Arsenates
     - Native Elements
     - Other
+- [ ] : **Optimize database queries.**
+  - [ ] : Use the `django-debug-toolbar` to check that queries to the database take no longer than 10ms to complete.
+- [ ] : **Unit test the app.**
+  - [ ] : Write unit tests to test that each view is displaying the correct information. 
+  - [ ] : Write unit tests to test that the models, classes, and other functions behave as expected.
+- [ ] : **Make the templates match the style used in the example files.**
+  - [ ] : Look at the example HTML files and `global.css` to determine the styles used in the pages.
+- [ ] : **Coding Style.**
+  - [ ] : Make sure your coding style complies with [PEP 8][link05].
+
 
 [link01]: https://github.com/Crossroadsman/treehouse-techdegree-python-project6/blob/master/mineral_catalog/requirements.txt
 [link02]: https://github.com/Crossroadsman/treehouse-techdegree-python-project6/tree/master/mineral_catalog
 [link03]: https://github.com/Crossroadsman/treehouse-techdegree-python-project6/tree/master/mineral_catalog/cover
 [link04]: https://github.com/Crossroadsman/treehouse-techdegree-python-project6/tree/master/mineral_catalog/scripts
+[link05]: https://www.python.org/dev/peps/pep-0008/
