@@ -61,6 +61,11 @@ Feature Checklist
 - [ ] : **Unit test the app.**
   - [ ] : Write unit tests to test that each view is displaying the correct information. 
   - [ ] : Write unit tests to test that the models, classes, and other functions behave as expected.
+  - [ ] : There are unit tests for all the:
+    - [ ] : views
+    - [ ] : models
+    - [ ] : other functions
+  - [ ] : Tests cover a reasonable amount of the code (50–80%).
 - [ ] : **Make the templates match the style used in the example files.**
   - [ ] : Look at the example HTML files and `global.css` to determine the styles used in the pages.
 - [ ] : **Coding Style.**
