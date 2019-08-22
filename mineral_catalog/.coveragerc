@@ -1,0 +1,11 @@
+[run]
+omit = 
+    # omit third-party code (upstream is responsible for testing)
+    venv/*
+
+    # omit any generated code
+    */migrations/*
+
+    # omit the tests themselves
+    */tests/*
+
