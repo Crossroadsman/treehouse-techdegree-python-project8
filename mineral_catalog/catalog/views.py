@@ -13,15 +13,40 @@ def index(request, letter='A', group=None):
     # Note we could have used POST for the form,
     # but GET is better for submissions that don't change state on
     # the server and it allows the user to bookmark a particular search
-    if request.GET.get('search_query'):  # a search was submitted
+    get = request.GET
+    search_query = request.GET.get('search_query')
+    if search_query:  # a search was submitted
 
-        term = request.GET.get('search_query')
-        minerals = full_text_search(term)
-        context = {
-            'minerals': minerals,
-            'filter_fields': FILTER_FIELDS,
-            'form': SearchForm()  # clear out the search box
-        }
+        form = SearchForm(data=get)
+        if form.is_valid():
+
+            term = form.cleaned_data['search_query']
+            minerals = full_text_search(term)
+            context = {
+                'minerals': minerals,
+                'filter_fields': FILTER_FIELDS,
+                'form': SearchForm()  # clear out the search box
+            }
+        
+        else:  # validation errors
+            """For now, we should never get a validation error, since
+            the only constraint we are imposing is max length and a form
+            submission exceeding max_length is automatically truncated to
+            max length.
+            In the future, if we decide to validate on some other basis, 
+            we can extend the code below (which gracefully handles errors
+            by reporting to the console and then returning an empty
+            queryset).
+            """
+            print(f'FORM INVALID!\n========\n{form.errors}')
+            
+            # Show nothing
+            minerals = Mineral.objects.none()
+            context = {
+                'minerals': minerals,
+                'filter_fields': FILTER_FIELDS,
+                'form': SearchForm()
+            }
 
     else:  # regular page load
 
