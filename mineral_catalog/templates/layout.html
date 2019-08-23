@@ -56,17 +56,15 @@
             {% endfor %}
 
             <!-- search -->
-            <form action="{% url 'catalog:search' %}" class="menu search-menu">
+            <form action="{% url 'catalog:index' %}" class="menu search-menu">
               <ul>
-                <li><input type="search" name="q"></li>
-                <li><button type="button">Search</button></li>
+                <li>{{ form.search_query }}</li>
+                <li><button type="submit">Search</button></li>
               </ul>
             </form>
           </div>
         </div>
       </div>
-      
-      
 
       {% block content %}
       {% endblock %}

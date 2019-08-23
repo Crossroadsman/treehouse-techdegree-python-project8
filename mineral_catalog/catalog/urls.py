@@ -25,6 +25,5 @@ urlpatterns = [
     re_path('^mineral/(?P<mineral_id>\d+)', views.detail, name='detail'),
     re_path('^random$', views.random_mineral, name='random'),
     re_path('^initial/(?P<letter>\w)', views.initial_letter, name="initial_letter"),
-    re_path('^search$', views.search, name="search"),
     re_path('^field/(?P<field>\w+)/i/(?P<index>\d+)', views.group, name='group'),
 ]
