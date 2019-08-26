@@ -21,7 +21,7 @@ from . import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    re_path('^$', views.index, name='index'),
+    re_path(r'^$', views.index, name='index'),
     path('catalog/', include('catalog.urls', namespace='catalog')),
 ]
 
