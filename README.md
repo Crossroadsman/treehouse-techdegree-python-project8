@@ -12,7 +12,7 @@ Installation
 - To run the application install the required packages using `pip install -r requirements.txt` from the 
   [mineral catalog][link02] project folder.
 - To be able to run tests and generate coverage reports also install the test-specific packages using 
-  `pip install -r test-requirements.txt`
+  `pip install -r test_requirements.txt`
 
 Usage
 -----
