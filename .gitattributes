@@ -1,0 +1,8 @@
+# unlike .gitignore, patterns that match a directory do not recursively 
+# match paths inside that directory. Wherever you would use `path/` in 
+#.gitignore use `path/**` in .gitattributes
+# see: https://git-scm.com/docs/gitattributes
+data/** linguist-vendored
+mineral_catalog/assets/** linguist-vendored
+mineral_catalog/catalog/admin.py linguist-vendored
+mineral_catalog/mineral_catalog/wsgi.py linguist-vendored
