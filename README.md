@@ -62,18 +62,18 @@ Feature Checklist
     - Other
 - [x] : **Optimize database queries.**
   - [x] : Use the `django-debug-toolbar` to check that queries to the database take no longer than 10ms to complete.
-- [ ] : **Unit test the app.**
-  - [ ] : Write unit tests to test that each view is displaying the correct information. 
-  - [ ] : Write unit tests to test that the models, classes, and other functions behave as expected.
-  - [ ] : There are unit tests for all the:
-    - [ ] : views
-    - [ ] : models
-    - [ ] : other functions
-  - [ ] : Tests cover a reasonable amount of the code (50–80%).
+- [x] : **Unit test the app.**
+  - [x] : Write unit tests to test that each view is displaying the correct information. 
+  - [x] : Write unit tests to test that the models, classes, and other functions behave as expected.
+  - [x] : There are unit tests for all the:
+    - [x] : views
+    - [x] : models
+    - [x] : other functions
+  - [x] : Tests cover a reasonable amount of the code (50–80%).
 - [x] : **Make the templates match the style used in the example files.**
   - [x] : Look at the example HTML files and `global.css` to determine the styles used in the pages.
-- [ ] : **Coding Style.**
-  - [ ] : Make sure your coding style complies with [PEP 8][link05].
+- [x] : **Coding Style.**
+  - [x] : Make sure your coding style complies with [PEP 8][link05].
 
 ### Extra Credit Features ###
 - [x] : **Allow full-text search.**
