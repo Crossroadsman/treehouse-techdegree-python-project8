@@ -4,7 +4,8 @@ from django.test import Client, TestCase
 from django.urls import resolve, reverse
 
 from catalog.models import Mineral
-from catalog.views import (index, detail, random_mineral, initial_letter, group)
+from catalog.views import (index, detail, random_mineral,
+                           initial_letter, group)
 
 
 VALID_MINERAL_DATA = {
@@ -43,7 +44,7 @@ class ViewTestCase(TestCase):
         self.target_view = None
         self.template = 'catalog/'
         self.url = '/catalog/'
-        
+
         self.client = Client()
 
     # Test Methods
@@ -55,13 +56,7 @@ class ViewTestCase(TestCase):
         if self.abstract:
             return
 
-        try:
-            resolved_view = resolve(self.url).func
-        except:
-            print("RESOLVER ERROR")
-            print(self)
-            for setting in [self.name, self.target_view, self.template, self.url]:
-                print(setting)
+        resolved_view = resolve(self.url).func
 
         self.assertEqual(resolved_view, self.target_view)
 

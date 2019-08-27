@@ -27,19 +27,19 @@ def index(request, letter='A', group=None):
                 'filter_fields': FILTER_FIELDS,
                 'form': SearchForm()  # clear out the search box
             }
-        
+
         else:  # validation errors
             """For now, we should never get a validation error, since
             the only constraint we are imposing is max length and a form
             submission exceeding max_length is automatically truncated to
             max length.
-            In the future, if we decide to validate on some other basis, 
+            In the future, if we decide to validate on some other basis,
             we can extend the code below (which gracefully handles errors
             by reporting to the console and then returning an empty
             queryset).
             """
             print(f'FORM INVALID!\n========\n{form.errors}')
-            
+
             # Show nothing
             minerals = Mineral.objects.none()
             context = {
@@ -57,9 +57,9 @@ def index(request, letter='A', group=None):
             'filter_fields': FILTER_FIELDS,
             'form': SearchForm(),
         }
-    
+
     template = 'catalog/index.html'
-    
+
     return render(request, template, context)
 
 
@@ -80,12 +80,14 @@ def detail(request, mineral_id):
     }
     return render(request, template, context)
 
+
 def random_mineral(request):
     minerals = Mineral.objects.all()
     count = minerals.count()
     index = random.randrange(count)
     mineral = minerals[index]
     return redirect('catalog:detail', mineral_id=mineral.pk)
+
 
 def initial_letter(request, letter):
     minerals = Mineral.objects.filter(name__startswith=letter)
@@ -97,6 +99,7 @@ def initial_letter(request, letter):
         'form': SearchForm(),
     }
     return render(request, template, context)
+
 
 def group(request, field, index):
     """Displays a list view which is filtered by a `field` (the valid fields

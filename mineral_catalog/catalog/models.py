@@ -65,12 +65,12 @@ class Mineral(models.Model):
 
     def __str__(self):
         return self.name
-    
+
     def fieldnames_and_values(self):
         """Provides a convenient dictionary where all the keys are the fields
         and the values are the fields with spaces separating the words"""
         fields = self._meta.get_fields()
-        
+
         data = {}
         for field in fields:
             data[field.name] = {

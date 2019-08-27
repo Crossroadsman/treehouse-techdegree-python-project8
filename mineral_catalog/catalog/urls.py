@@ -19,11 +19,19 @@ from django.urls import path, re_path
 from . import views
 
 
-app_name='catalog'
+app_name = 'catalog'
 urlpatterns = [
     path('', views.index, name='index'),
     re_path(r'^mineral/(?P<mineral_id>\d+)', views.detail, name='detail'),
     re_path(r'^random$', views.random_mineral, name='random'),
-    re_path(r'^initial/(?P<letter>\w)', views.initial_letter, name="initial_letter"),
-    re_path(r'^field/(?P<field>\w+)/i/(?P<index>\d+)', views.group, name='group'),
+    re_path(
+        r'^initial/(?P<letter>\w)',
+        views.initial_letter,
+        name="initial_letter"
+    ),
+    re_path(
+        r'^field/(?P<field>\w+)/i/(?P<index>\d+)',
+        views.group,
+        name='group'
+    ),
 ]
