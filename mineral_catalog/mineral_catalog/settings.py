@@ -133,11 +133,17 @@ STATICFILES_DIRS = (
 TEST_RUNNER = 'django_nose.NoseTestSuiteRunner'
 
 # Tell nose which apps to measure coverage
+# We've written some workaround code in manage.py to handle a limitation
+# in coverage measurement due to the timing of model imports. Since
+# we're specifying coverage generation there, we don't need to specify
+# it here.
+'''
 NOSE_ARGS = [
     '--with-coverage',
     '--cover-package=catalog',  # packages can be comma-separated
     '--cover-html',  # generate HTML coverage report
 ]
+'''
 
 # Specify internal IPs for debug_toolbar
 INTERNAL_IPS = ['127.0.0.1']
