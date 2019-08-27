@@ -1,6 +1,10 @@
 Project 8: Filtering and Searching the Mineral Catalog
 ======================================================
 
+Requirements
+------------
+The minimum compatible version of Python is 3.6 (December 2016).
+
 Installation
 ------------
 - Clone the repo
@@ -30,9 +34,9 @@ Feature Checklist
   - [x] : The letter of the alphabet currently being displayed should be bolded. 
   - [x] : In the details view, no letter should be bolded. 
   - [x] : On the homepage, select ‘A’ by default.
-- [ ] : **Allow text search.**
+- [x] : **Allow text search.**
   - [x] : Add a search box and button. 
-  - [ ] : The search box and button should be implemented as a form.
+  - [x] : The search box and button should be implemented as a form.
   - [x] : When the search button is clicked, the site will search for minerals whose name contains the search text.
   - [x] : The names of the minerals that match the search will be displayed in the list view.
   - [x] : Add the search form to the layout template so that searching can be performed from any page in the site.
