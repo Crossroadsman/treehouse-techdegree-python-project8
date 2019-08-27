@@ -65,7 +65,6 @@ class ViewTestCase(TestCase):
 
         self.assertEqual(resolved_view, self.target_view)
 
-
     def test_view_associated_with_correct_name(self):
         if self.abstract:
             return
@@ -92,7 +91,7 @@ class IndexViewTests(ViewTestCase):
         self.target_view = index
         self.template += "index.html"
         self.url += ""
-        
+
         self.test_mineral_data = VALID_MINERAL_DATA
         self.test_mineral_1 = Mineral.objects.create(**self.test_mineral_data)
         self.test_mineral_1.name = "A Test Mineral Index 2 (id1)"
@@ -100,7 +99,7 @@ class IndexViewTests(ViewTestCase):
         self.test_mineral_2 = Mineral.objects.create(**self.test_mineral_data)
         self.test_mineral_2.name = "A Test Mineral Index 1 (id2)"
         self.test_mineral_2.save()
-        
+
     def test_index_view_shows_all_minerals(self):
         response = self.client.get(reverse(self.name))
 
@@ -118,7 +117,7 @@ class IndexViewTests(ViewTestCase):
         """Correct order is alphabetical"""
         response = self.client.get(reverse(self.name))
         test_string = str(response.content)
-        
+
         self.assertLess(
             test_string.index(self.test_mineral_2.name),
             test_string.index(self.test_mineral_1.name)
@@ -144,7 +143,7 @@ class DetailViewTests(ViewTestCase):
         self.test_mineral_2.save()
 
         self.kwargs = {'mineral_id': self.test_mineral_1.pk}
-    
+
     def test_detail_view_shows_only_correct_mineral(self):
         response = self.client.get(reverse(self.name, kwargs=self.kwargs))
 
@@ -159,7 +158,7 @@ class DetailViewTests(ViewTestCase):
         exclude_fields = ['id']
         top_section_fields = ['name', 'image_filename', 'image_caption']
         highlighted_fields = ['category', 'group']
-        
+
         for field in exclude_fields:
             self.assertIn(field, response.context['exclude'])
         for field in top_section_fields:
@@ -179,7 +178,7 @@ class DetailViewTests(ViewTestCase):
     def test_detail_view_renders_highlighted_before_nonhighlighted(self):
         response = self.client.get(reverse(self.name, kwargs=self.kwargs))
         test_string = str(response.content)
-        
+
         self.assertLess(
             test_string.index(response.context['highlighted'][0]),
             test_string.index('Luster')
@@ -218,7 +217,7 @@ class RandomMineralViewTests(ViewTestCase):
     def test_random_mineral_view_redirects_to_valid_detail(self):
 
         response = self.client.get(reverse(self.name), follow=True)
-        
+
         self.assertEqual(response.status_code, self.final_status_code)
         final_redirect = response.redirect_chain[-1][0]
         self.assertEqual(
@@ -249,7 +248,7 @@ class InitialLetterViewTests(ViewTestCase):
 
 
 class GroupViewTests(ViewTestCase):
-    
+
     def setUp(self):
         super().setUp()
 
@@ -268,9 +267,9 @@ class GroupViewTests(ViewTestCase):
         self.test_mineral_2 = Mineral.objects.create(**self.test_mineral_data)
         self.test_mineral_2.name = "Antimonide"
         self.test_mineral_2.save()
-    
+
     def test_only_shows_minerals_matching_filter(self):
-        
+
         response = self.client.get(reverse(self.name, kwargs=self.kwargs))
 
         self.assertContains(response, self.test_mineral_2.name)

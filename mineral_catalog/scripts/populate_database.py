@@ -57,12 +57,14 @@ def strip_leading_characters(string, num):
     """Returns the input string after removing `num` leading characters"""
     return string[num:]
 
+
 def set_name_from_dict(string, dictionary, key, leading, trailing):
     """Replaces the string with the value from a specified dictionary key,
     prepending and appending the leading/trailing text as applicable"""
     return "{}{}{}".format(leading,
                            dictionary[key],
                            trailing)
+
 
 def clean_data(dictionary):
     name_map = {
@@ -87,7 +89,7 @@ def clean_data(dictionary):
 
     tweaks_map = {
         'image_filename': {'function': set_name_from_dict,
-                           'args': [dictionary, 
+                           'args': [dictionary,
                                     'name',
                                     '',
                                     '.jpg']},

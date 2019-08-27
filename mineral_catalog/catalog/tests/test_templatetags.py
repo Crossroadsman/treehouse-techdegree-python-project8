@@ -1,7 +1,7 @@
 from django.test import TestCase
 
-from catalog.templatetags.catalog_extras import (nav_field_list, 
-    deunderscore, index)
+from catalog.templatetags.catalog_extras import (nav_field_list,
+                                                 deunderscore, index)
 from catalog.group_lookup import groups
 from catalog.models import Mineral
 
@@ -96,6 +96,7 @@ MINERAL_DATA = [
         'specific_gravity': "Test Specific Gravity"
     },
 ]
+
 
 class NavFieldListTests(TestCase):
 

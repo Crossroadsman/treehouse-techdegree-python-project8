@@ -104,7 +104,11 @@ class GroupLookupTests(TestCase):
     def test_get_matching_queryset_creates_correct_queryset_for_group(self):
 
         name = 'group'
-        list = ['Organic Minerals', 'Arsenates', 'Halides', 'Sulfides', 'Silicates', 'Other', 'Oxides', 'Sulfosalts', 'Phosphates', 'Carbonates', 'Sulfates', 'Native Elements', 'Borates']
+        list = [
+            'Organic Minerals', 'Arsenates', 'Halides', 'Sulfides',
+            'Silicates', 'Other', 'Oxides', 'Sulfosalts', 'Phosphates',
+            'Carbonates', 'Sulfates', 'Native Elements', 'Borates'
+        ]
         match = 'exact'
         i = 3
 
@@ -136,9 +140,15 @@ class GroupLookupTests(TestCase):
             'Amphibole', 'Antimonide', 'Arsenate', 'Arsenic', 'Arsenide',
             'Arsenite', 'Borate', 'Carbonate', 'Chromate', 'Copper',
             'Dark mica', 'Feldspar', 'Feldspathoid', 'Garnet', 'Halide',
-            'Inosilicate', 'Iodate', 'Manganese', 'Metals and intermetallic alloys', 'Meteorite', 
-            'Molybdate', 'Native', 'Nesosilicates', 'Nitrate', 'Organic', 
-            'Oxalate', 'Oxide', 'Phosphate', 'Pyroxene', 'Rare earth', 'Selenate', 'Selenide', 'Silicate', 'Sulfate', 'Sulfide', 'Sulfosalt', 'Tectosilicates', 'Tektoborate', 'Telluride', 'Tellurate', 'Tellurite', 'Titanium', 'Tungstate', 'Uranium', 'Vanadate', 'Zeolite']
+            'Inosilicate', 'Iodate', 'Manganese',
+            'Metals and intermetallic alloys', 'Meteorite',
+            'Molybdate', 'Native', 'Nesosilicates', 'Nitrate', 'Organic',
+            'Oxalate', 'Oxide', 'Phosphate', 'Pyroxene', 'Rare earth',
+            'Selenate', 'Selenide', 'Silicate', 'Sulfate', 'Sulfide',
+            'Sulfosalt', 'Tectosilicates', 'Tektoborate', 'Telluride',
+            'Tellurate', 'Tellurite', 'Titanium', 'Tungstate', 'Uranium',
+            'Vanadate', 'Zeolite'
+        ]
         match = 'contains'
         i = 28
 
@@ -166,7 +176,7 @@ class GroupLookupTests(TestCase):
             'Test Mineral 3',
             'Test Mineral 4',
         ]
-        
+
         self.assertEqual(
             test_queryset.count(),
             3
@@ -198,7 +208,7 @@ class GroupLookupTests(TestCase):
             'Test Mineral 1',
             'Test Mineral 2'
         ]
-        
+
         self.assertEqual(
             test_queryset.count(),
             2
@@ -207,4 +217,3 @@ class GroupLookupTests(TestCase):
         for name in expected_matches:
 
             self.assertTrue(name in result_names)
-

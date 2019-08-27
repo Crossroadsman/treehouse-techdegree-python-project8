@@ -81,5 +81,3 @@ class MineralModelTests(TestCase):
                 key.replace('_', ' '),
                 test_fieldnames_and_values[key]['name']
             )
-
-

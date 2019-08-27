@@ -12,7 +12,7 @@ if __name__ == '__main__':
             "available on your PYTHONPATH environment variable? Did you "
             "forget to activate a virtual environment?"
         ) from exc
-    
+
     # --- Nose/Coverage limitation Workaround ---
     # Models are imported by the app configuration process. Therefore, by
     # default, running manage.py test will report incorrect model coverage
@@ -22,7 +22,7 @@ if __name__ == '__main__':
     # coverage (i.e., execute `python manage.py test` and use the test config
     # from `settings.py`). In contrast `coverage run manage.py test` works
     # fine since the coverage tracking begins before manage.py starts.
-    # Thus this workaround is only necessary if we are using Nose and manage.py 
+    # Thus this workaround is only necessary if we are using Nose and manage.py
     # to generate the coverage report
     # See: https://github.com/jazzband/django-nose/issues/180
     is_testing = 'test' in sys.argv
@@ -33,7 +33,7 @@ if __name__ == '__main__':
         cov.erase()
         cov.start()
     # ---End Workaround
-    
+
     execute_from_command_line(sys.argv)
 
     # --- Nose/Coverage limitation Workaround ---

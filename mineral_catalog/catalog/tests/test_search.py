@@ -101,7 +101,7 @@ class SearchTests(TestCase):
     def setUp(self):
         for mineral_data in MINERAL_DATA:
             Mineral.objects.create(**mineral_data)
-    
+
     def test_search_term_is_found_anywhere_in_text_fields(self):
 
         search_term = "xtestx"
