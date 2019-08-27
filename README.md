@@ -97,40 +97,34 @@ Testing
 
 - Run a single test suite:
   ```console
-  $ python manage.py test accounts
+  $ python manage.py test catalog
   ```
 
 - Run a single test file:
   ```console
-  $ python manage.py test accounts.tests.test_models
+  $ python manage.py test catalog.tests.test_models
   ```
 
 - Run a single test case:
   ```console
-  $ python manage.py test accounts.tests.test_models.UserProfileModelTest
+  $ python manage.py test catalog.tests.test_models.MineralModelTests
   ```
 
 - Run a single test method:
   ```console
-  $ python manage.py test accounts.tests.test_models.UserProfileModelTest.test_userprofile_without_required_fields_is_invalid
+  $ python manage.py test catalog.tests.test_models.MineralModelTests.test_create_model_correctly_reflects_data
   ```
 
 ### Coverage ###
 
-- Run coverage:
-  ```console
-  $ coverage run manage.py test [the-app-to-test]
-  ```
+Note coverage is configured to run automatically. 
 
-- Show the coverage report:
-  ```console
-  $ coverage report
-  ```
+In order to workaround a limitation in the way coverage is calculated, `manage.py` has been modified to force coverage 
+to start before models are loaded and stop at the end (otherwise the coverage report understates model coverage). 
+This workaround causes correct values to be computed when `python manage.py test` is executed, but means that manually
+launching coverage using `coverage run manage.py test` will cause coverage to only show manage.py. If you want to run
+coverage manually, delete the code in `manage.py` that is marked as workaround, and then launch coverage as usual.
 
-- Erase the coverage report
-  ```console
-  $ coverage erase
-  ```
 
 
 
